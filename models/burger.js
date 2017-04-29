@@ -8,7 +8,10 @@ var burgers = {
     orm.insertOne("burgers", cols, vals, cb);
   },
   update: function(colsVals, condition, cb){
-    orm.updateOne("burger", colsVals, condition, cb);
+    orm.updateOne("burgers", colsVals, condition, cb);
+  },
+  destroy: function(id, cb){
+    orm.destroyOne("burgers", "id = "+id, cb);
   }
 };
 

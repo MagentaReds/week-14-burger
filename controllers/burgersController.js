@@ -17,6 +17,7 @@ router.post("/", function(req, res){
   var newBurger = req.body;
   var cols = ["burger_name"];
   var vals = [req.body.burger_name];
+  console.log("Adding Burger: " +req.body.burger_name);
   burger.create(cols, vals, function(results){
     res.redirect("/");
   });
@@ -25,11 +26,18 @@ router.post("/", function(req, res){
 router.put("/:id", function(req, res){
   var updatedBurger = req.body;
   var colsVals ={
-    devoured: updatedBurger.devoured,
-    burger_name: updatedBurger.burger_name
+    devoured: updatedBurger.devoured
   };
   var condition = "id = "+updatedBurger.id;
   burger.update(colsVals, condition, function(results){
     res.redirect("/");
   });
 });
+
+router.delete("/:id", function(req, res){
+  burger.destroy(req.body.id, function(results){
+    res.redirect("/");
+  });
+});
+
+module.exports = router;
