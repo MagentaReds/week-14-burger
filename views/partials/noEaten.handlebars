@@ -3,11 +3,11 @@
     {{#each burgers}}
       {{#unless this.devoured}}
         <li>  
-          <p>{{this.burger_name}}
+          <p><strong>{{this.burger_name}}</strong></p>
           <form action="/{{this.id}}?_method=PUT" method="POST">
             <input type="hidden" name="devoured" value="true">
             <input type="hidden" name="id" value="{{this.id}}">
-            <button type="submit">DEVOUR ME!</button>
+            <button class="btn btn-warning" type="submit">DEVOUR ME!</button>
           </form>
         </li>
       {{/unless}}
